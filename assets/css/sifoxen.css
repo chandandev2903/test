@@ -1503,8 +1503,8 @@ h6 {
   top: 0;
   left: 0;
   opacity: 0;
-  background-color: RGBA(var(--sifoxen-black-rgb, 54, 32, 72), 0.5);
-  transition: all 500ms ease;
+  /* background-color: RGBA(var(--sifoxen-black-rgb, 54, 32, 72), 0.5);
+  transition: all 500ms ease; */
 }
 .therapist-card__image img {
   position: relative;
