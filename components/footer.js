@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         data-wow-delay="00ms">
                         <div class="footer-widget footer-widget--about">
                             <h2 class="footer-widget__title">about </h2><!-- /.footer-widget__title -->
-                            <p class="footer-widget__about-text">Holistic Care Promise: No Pain, No Intake of Medicines,
-                                No Side Effects</p><!-- /.footer-widget__about-text -->
+                            <p class="footer-widget__about-text"> A holistic care promise with no pain, no intake of medicines, and no side effects, delivering safe natural therapies focused on root cause healing and long term wellness.
+</p><!-- /.footer-widget__about-text -->
 
                         </div><!-- /.footer-widget -->
                     </div><!-- /.col-lg-4 -->
@@ -57,8 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <li><a href="#">Magnetic Therapy</a></li>
                                 <li><a href="#">Cosmetic Acupuncture</a></li>
                             </ul><!-- /.list-unstyled footer-widget__links -->
+                            
                         </div><!-- /.footer-widget -->
-                    </div><!-- /.col-lg-4 -->
+                        
+                    </div>
+                    <!-- /.col-lg-4 -->
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-duration="1500ms"
                         data-wow-delay="400ms">
                         <div class="footer-widget footer-widget--time">

@@ -2926,7 +2926,7 @@ h6 {
   display: flex;
   align-items: center;
   font-size: 15px;
-  color: var(--sifoxen-gray2, #9F83B5);
+  color: white;
   line-height: 1.866;
 }
 
@@ -2995,10 +2995,14 @@ h6 {
   fill: currentColor;
 }
 
+.icon-color{
+  color: #4CB520;
+}
+
 .topbar-one__open__text {
   margin: 0;
   font-size: 15px;
-  color: var(--sifoxen-gray2, #9F83B5);
+  color: white;
   line-height: 1.866;
 }
 
@@ -8104,7 +8108,7 @@ li:hover .about-two__list__icon {
   width: calc(100% - 25px);
   position: relative;
   padding: 6.5px 14px 8.5px 0;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 600;
   color: var(--sifoxen-white, #fff);
   line-height: normal;

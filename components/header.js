@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 <ul class="list-unstyled topbar-one__info">
                     <li>
                         <span class="topbar-one__info__icon">
-                            <i class="icon-mail"></i>
+                            <i class="icon-mail icon-color"></i>
                         </span>
                         <a href="mailto:navtejonco@gmail.com">navtejonco@gmail.com</a>
                     </li>
                     <li>
                         <span class="topbar-one__info__icon topbar-one__info__icon--phone">
-                            <i class="icon-phone-call"></i>
+                            <i class="icon-phone-call icon-color"></i>
                         </span>
                         <a href="tel:+918150863905">+918150863905</a>
                     </li>
@@ -77,6 +77,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         </li>
 
                         <li class="dropdown">
+                            <a href="#">Resources</a>
+                            <ul>
+                                  <li><a href="gallery.html">Gallery</a></li>
+                                  <li><a href="#">Blog</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
                             <a href="#">Treatments</a>
                             <ul>
                                 <li><a href="#">Infertility Treatment</a></li>
@@ -85,9 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <li><a href="#">Musculoskeletal Pain Conditions</a></li>
                             </ul>
                         </li>
-
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="#">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
