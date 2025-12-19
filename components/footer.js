@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const sidebarHTML = `
      <footer class="main-footer">
-            <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.jpg);"></div>
+            <div class="main-footer__bg" style="background-image: url(assets/images/banner/footer.png);"></div>
             <!-- /.main-footer__bg -->
             <div class="container">
                 <div class="main-footer__top wow fadeInUp" data-wow-duration="1500ms">

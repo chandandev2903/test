@@ -77,15 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         </li>
 
                         <li class="dropdown">
-                            <a href="#">Resources</a>
-                            <ul>
-                                  <li><a href="gallery.html">Gallery</a></li>
-                                  <li><a href="#">Blog</a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="dropdown">
                             <a href="#">Treatments</a>
                             <ul>
                                 <li><a href="#">Infertility Treatment</a></li>
@@ -94,6 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <li><a href="#">Musculoskeletal Pain Conditions</a></li>
                             </ul>
                         </li>
+
+                        <li class="dropdown">
+                            <a href="#">Resources</a>
+                            <ul>
+                                  <li><a href="gallery.html">Gallery</a></li>
+                                  <li><a href="#">Blog</a></li>
+                            </ul>
+                        </li>
+
+
+                        
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
