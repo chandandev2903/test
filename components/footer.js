@@ -120,8 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             </a>
                         </div><!-- /.social-links -->
                         <p class="main-footer__copyright">
-                            &copy; Copyright <span class="dynamic-year"></span> by Navtej
-                            Hospital </p>
+                            &copy; Copyright 2025 <span class="dynamic-year"></span> Navtej Acupuncture 
+Chiropractic &  Nutrition Center </p>
                     </div><!-- /.main-footer__inner -->
                 </div><!-- /.container -->
             </div><!-- /.main-footer__bottom -->

@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="topbar-one__right">
                     <div class="topbar-one__open">
                         <span class="topbar-one__open__icon">
-                            <i class="icon-clock"></i>
+                            <i class="icon-clock" style="color:#4DB520"></i>
                         </span>
-                        <p class="topbar-one__open__text">Mon to Fri 9:00am to 6:00pm</p>
+                        <p class="topbar-one__open__text">MON TO SUN 12:30AM T0 7:30PM</p>
                     </div>
 
                     <div class="topbar-one__social">
