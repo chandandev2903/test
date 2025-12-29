@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <li class="dropdown">
                             <a href="#">Services</a>
                             <ul>
-                                <li><a href="chiropractic-care.html">Chiropractic Care</a></li>
+                                <li><a href="#">Chiropractic Care</a></li>
                                 <li><a href="#">Cancer Nutrition</a></li>
                                 <li><a href="#">Physiotherapy & G5 Treatment</a></li>
                                 <li><a href="#">Cupping Therapy</a></li>
