@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Hero Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .healthcare-slider-container {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 600px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 75, 143, 0.2);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8);
+        }
+
+        .slide-1 .slide-bg {
+            background-image: url('https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .slide-2 .slide-bg {
+            background-image: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .slide-3 .slide-bg {
+            background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 60px;
+            color: white;
+            margin-left: 100px;
+        }
+
+        .slide-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2e86c1);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .slide-features {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .slide-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .slide-features i {
+            color: #3498db;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .slider-nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slider-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .slider-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2e86c1);
+            width: 0%;
+            transition: width 5s linear;
+        }
+
+        .slide.active .progress-bar {
+            width: 100%;
+        }
+
+        /* Stats overlay */
+        .stats-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-top-left-radius: 24px;
+            z-index: 5;
+            max-width: 300px;
+            box-shadow: -5px -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3498db, #2e86c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-slider {
+                height: 500px;
+            }
+
+            .slide-content {
+                margin-left: 60px;
+                padding: 40px;
+            }
+
+            .slide-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 450px;
+            }
+
+            .slide-content {
+                margin-left: 30px;
+                padding: 30px;
+                max-width: 80%;
+            }
+
+            .slide-title {
+                font-size: 36px;
+            }
+
+            .slide-subtitle {
+                font-size: 16px;
+            }
+
+            .stats-overlay {
+                position: relative;
+                max-width: 100%;
+                border-radius: 0;
+                margin-top: -30px;
+            }
+
+            .slider-controls {
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .healthcare-slider-container {
+                padding: 10px;
+            }
+
+            .hero-slider {
+                height: 400px;
+            }
+
+            .slide-content {
+                margin-left: 20px;
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .slide-title {
+                font-size: 28px;
+            }
+
+            .slide-features {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .slide-features li {
+                padding: 10px 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for slide content */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide.active .slide-content {
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        /* Floating elements animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 15px;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-1 {
+            top: 20%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+        }
+
+        .float-2 {
+            bottom: 30%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 2s;
+        }
+
+        .float-3 {
+            top: 40%;
+            right: 25%;
+            width: 120px;
+            height: 120px;
+            animation-delay: 4s;
+        }
+
+        .floating-element i {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="healthcare-slider-container">
+        <div class="hero-slider">
+            <div class="slider-wrapper">
+                <!-- Slide 1 - Updated with Doctor Consultation Image -->
+                <div class="slide slide-1 active">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Multispeciality Care</span>
+                        <h1 class="slide-title">Advanced Healthcare for Your Family</h1>
+                        <p class="slide-subtitle">Comprehensive medical care by our team of experts in multiple specialties for accurate diagnosis & effective treatment.</p>
+                        <ul class="slide-features">
+                            <li><i class="fas fa-check-circle"></i> Expert Medical Team</li>
+                            <li><i class="fas fa-check-circle"></i> State-of-the-Art Facilities</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 Emergency Care</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide slide-2">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Modern Technology</span>
+                        <h1 class="slide-title">Cutting-Edge Medical Technology</h1>
+                        <p class="slide-subtitle">Equipped with the latest diagnostic and treatment technologies for precise medical care and faster recovery.</p>
+                        <ul class="slide-features">
+                            <li><i class="fas fa-microscope"></i> Advanced Diagnostics</li>
+                            <li><i class="fas fa-robot"></i> Robotic Surgery</li>
+                            <li><i class="fas fa-brain"></i> Neuro Care Unit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide slide-3">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Compassionate Care</span>
+                        <h1 class="slide-title">Your Health, Our Priority</h1>
+                        <p class="slide-subtitle">Personalized treatment plans with compassionate care for your overall wellbeing and speedy recovery.</p>
+                        <ul class="slide-features">
+                            <li><i class="fas fa-user-md"></i> Personalized Care</li>
+                            <li><i class="fas fa-heart"></i> Patient-Centric Approach</li>
+                            <li><i class="fas fa-hand-holding-heart"></i> Supportive Environment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Floating decorative elements -->
+                <div class="floating-element float-1">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="floating-element float-2">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="floating-element float-3">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+            </div>
+
+            <!-- Stats Overlay -->
+            <div class="stats-overlay">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Expert Doctors</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Emergency Care</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Beds Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+                
+                <button class="slider-nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="slider-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class HealthcareSlider {
+            constructor() {
+                this.slider = document.querySelector('.hero-slider');
+                this.slides = document.querySelectorAll('.slide');
+                this.dots = document.querySelectorAll('.slider-dot');
+                this.prevBtn = document.querySelector('.prev-btn');
+                this.nextBtn = document.querySelector('.next-btn');
+                this.progressBar = document.querySelector('.progress-bar');
+                
+                this.currentSlide = 0;
+                this.slideCount = this.slides.length;
+                this.autoSlideInterval = null;
+                this.autoSlideDuration = 5000; // 5 seconds
+                
+                this.init();
+            }
+            
+            init() {
+                // Start auto sliding
+                this.startAutoSlide();
+                
+                // Event listeners
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Dot click events
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        const slideIndex = parseInt(e.target.dataset.slide);
+                        this.goToSlide(slideIndex);
+                    });
+                });
+                
+                // Pause on hover
+                this.slider.addEventListener('mouseenter', () => this.pauseAutoSlide());
+                this.slider.addEventListener('mouseleave', () => this.startAutoSlide());
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                });
+            }
+            
+            showSlide(index) {
+                // Reset all slides
+                this.slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Reset all dots
+                this.dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show current slide
+                this.slides[index].classList.add('active');
+                this.dots[index].classList.add('active');
+                
+                // Reset and start progress bar animation
+                this.progressBar.style.width = '0%';
+                void this.progressBar.offsetWidth; // Trigger reflow
+                this.progressBar.style.width = '100%';
+                this.progressBar.style.transition = `width ${this.autoSlideDuration}ms linear`;
+                
+                this.currentSlide = index;
+            }
+            
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.slideCount;
+                this.goToSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.slideCount) % this.slideCount;
+                this.goToSlide(prevIndex);
+            }
+            
+            goToSlide(index) {
+                this.showSlide(index);
+                this.restartAutoSlide();
+            }
+            
+            startAutoSlide() {
+                if (this.autoSlideInterval) return;
+                
+                this.autoSlideInterval = setInterval(() => {
+                    this.nextSlide();
+                }, this.autoSlideDuration);
+            }
+            
+            pauseAutoSlide() {
+                if (this.autoSlideInterval) {
+                    clearInterval(this.autoSlideInterval);
+                    this.autoSlideInterval = null;
+                    
+                    // Pause progress bar animation
+                    const computedStyle = getComputedStyle(this.progressBar);
+                    const width = computedStyle.width;
+                    this.progressBar.style.width = width;
+                    this.progressBar.style.transition = 'none';
+                }
+            }
+            
+            restartAutoSlide() {
+                this.pauseAutoSlide();
+                this.startAutoSlide();
+            }
+            
+            destroy() {
+                this.pauseAutoSlide();
+                // Remove event listeners if needed
+            }
+        }
+        
+        // Initialize slider when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = new HealthcareSlider();
+            
+            // Touch/swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const sliderElement = document.querySelector('.slider-wrapper');
+            
+            sliderElement.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            sliderElement.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - next slide
+                    slider.nextSlide();
+                }
+                
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - previous slide
+                    slider.prevSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
