@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <li class="dropdown">
                             <a href="#">Treatments</a>
                             <ul>
-                                <li><a href="Infertility-treatment.html">Infertility Treatment</a></li>
-                                <li><a href="#">Spinal Problems</a></li>
+                                 <li><a href="Spinal-Problems.html">Spinal Problems</a></li>
+                                <li><a href="#">Infertility Treatment</a></li>
                                 <li><a href="#">Neurological Conditions</a></li>
                                 <li><a href="#">Musculoskeletal Pain Conditions</a></li>
                             </ul>
